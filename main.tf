@@ -42,13 +42,12 @@ module "blog_autoscaling" {
   min_size           = 1
   max_size           = 2
   vpc_zone_identifier = module.blog_vpc.public_subnets
-  target_group_arns   = module.blog_alb.target_group_arns
+  target_group_arns   = module.blog_alb.autoscaling_group_target_group_arns
 }
 
 
 module "blog_alb" {
   source = "terraform-aws-modules/alb/aws"
-  version = "~> 6.0"
 
   name = "blog-alb"
   
